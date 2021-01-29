@@ -1,0 +1,30 @@
+.invite {
+  color: black;
+  /* background-color: rgb(13, 148, 153); */
+  height: 40px;
+  text-align: center;
+  padding: 7px 0 10px 0;
+  background: linear-gradient(to right, #33ccff 0%, #ff99cc 100%);
+}
+
+.outerDiv {
+  /* text-align: center; */
+  padding: 0px 5px 5px 5px;
+}
+
+.breadcrumb {
+  background-color: white !important;
+  padding: 0px;
+  color: black;
+  margin-bottom: 0px;
+}
+
+.button {
+  padding: 0px 0px !important;
+  font-size: px;
+}
+
+.h4 {
+  text-align: left;
+  padding: 0px 0px 0px 15px;
+}
