@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import postStyles from "../css/posts.module.css";
 import "bootstrap/dist/css/bootstrap.css";
 import Filter from "../components/Filter";
-function products() {
+import ProductList from "../components/ProductList";
+
+function Products1() {
+  const [filter, setFilter] = useState("All Products");
+
+  // setFilterValue = (value) => {
+  //   setFilter(value);
+  // };
+
+  // console.log("filter from products", filter);
+
   return (
     <div>
       {/* Invite Friends section  */}
       <h5 className={postStyles.invite}>
         Invite Friends to Big Fashion Festival & Get Up To $150 MynCash For
-        Every Person WHo Visits!
+        Every Person Who Visits!
       </h5>
       <div className={postStyles.outerDiv}>
         {/* Breadcrumb Section */}
@@ -39,14 +49,18 @@ function products() {
             </li>
           </ol>
         </nav>
+
         {/* All Products heading */}
         <h4 className={`${postStyles.h4} `}>All Products</h4>
 
         {/* Filter */}
-        <Filter />
+        <Filter setFilterValue={(value) => setFilter(value)} />
+
+        {/* Product list */}
+        <ProductList filter={filter} />
       </div>
     </div>
   );
 }
 
-export default products;
+export default Products1;

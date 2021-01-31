@@ -9,14 +9,13 @@ import "bootstrap/dist/css/bootstrap.css";
 import { IoMdCart } from "react-icons/io";
 import { IoMdPerson } from "react-icons/io";
 import { IoIosSearch } from "react-icons/io";
+
 function MyNavbar() {
   return (
     <Navbar bg="light" variant="light">
-      <Navbar.Brand href="#home">ABC</Navbar.Brand>
+      <Navbar.Brand href="/">ABC</Navbar.Brand>
       <Nav className="navbar-nav mx-auto text-md-center">
-        <Nav.Link active href="#shop">
-          Shop
-        </Nav.Link>
+        <Nav.Link href="/">Shop</Nav.Link>
         <Nav.Link href="#about">About Us</Nav.Link>
         <Nav.Link href="#stores">Our Stores</Nav.Link>
         <Nav.Link href="#contact">Contact Us</Nav.Link>
@@ -28,10 +27,11 @@ function MyNavbar() {
         </Button>
         <Nav className="navbar-nav mx-auto ">
           <Nav.Link href="#account">
-            <IoMdPerson size="25" />
+            <IoMdPerson size="25"></IoMdPerson>
           </Nav.Link>
-          <Nav.Link href="#cart">
-            <IoMdCart size="25" />
+          <Nav.Link href="/cart">
+            {/* <Link to="/cart"></Link> */}
+            <IoMdCart size="25"></IoMdCart>
           </Nav.Link>
         </Nav>
       </Form>

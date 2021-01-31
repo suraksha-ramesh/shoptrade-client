@@ -1,0 +1,42 @@
+.row {
+  display: flex;
+  overflow: hidden;
+  text-align: center;
+  height: 500px;
+  padding: 8px;
+}
+
+.fill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.fillimg {
+  flex-shrink: 0;
+  min-width: 70%;
+  min-height: 70%;
+}
+
+.col {
+  display: flex;
+  overflow: hidden;
+  padding: 5px 5px 5px 5px;
+  margin: 5px;
+  height: 100%;
+}
+
+.cardbody {
+  display: flex;
+  overflow: hidden;
+}
+
+.cardTitle {
+  text-align: left;
+  display: flex;
+  overflow: hidden;
+}
+
+.cardText {
+  text-align: left;
+}
