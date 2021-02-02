@@ -55,8 +55,9 @@ class Product extends Component {
         <del>{`$ ${this.props.product.compare_at_price}`}</del>{" "}
         <small className={style.discount}>
           {`${Math.round(
-            (this.props.product.price / this.props.product.compare_at_price) *
-              100
+            ((this.props.product.compare_at_price - this.props.product.price) *
+              100) /
+              this.props.product.compare_at_price
           )}%Off`}
         </small>
       </div>

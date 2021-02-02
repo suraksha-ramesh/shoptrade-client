@@ -111,9 +111,11 @@ function Cart() {
                       <del>{`$ ${item.product.compare_at_price}`}</del>{" "}
                       <small className={style.discount}>
                         {`${Math.round(
-                          (item.product.price / item.product.compare_at_price) *
-                            100
-                        )} %Off`}
+                          ((item.product.compare_at_price -
+                            item.product.price) *
+                            100) /
+                            item.product.compare_at_price
+                        )}%Off`}
                       </small>
                     </div>
 
