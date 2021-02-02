@@ -1,6 +1,36 @@
-# Getting Started with Create React App
+# E-Commerece Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Simple e-commerce website displaying products and cart page.
+
+
+## Screenshots
+
+<p align>
+ <p>Products Page: </p>
+  
+  <img align='centre' src = 'Screenshots/Screenshot (96).png' height = '246px'>  
+  <hr/>
+  <p>Filter Products: </p>
+  <img src = 'Screenshots/Screenshot (97).png' height = '246px'>
+  </hr>
+  <p>On hover options are displayed: </p>
+<img src = 'Screenshots/Screenshot (98).png' height = '246px'>
+<hr/>
+<p>On Clicking any option, add to cart button is available</p>
+<img src = 'Screenshots/Screenshot (99).png' height = '246px'>
+<hr/>
+<p>Once added to cart, go to cart button is seen</p>
+<img src = 'Screenshots/Screenshot (100).png' height = '246px'>
+<hr/>
+<p>Cart page. Product quantity can be modified. Delete option too available<p/>
+<img src = 'Screenshots/Screenshot (103).png' height = '246px'>
+<hr/>
+
+</p>
+
+## To install all dependencies
+
+### `npm install`
 
 ## Available Scripts
 
@@ -39,32 +69,4 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
