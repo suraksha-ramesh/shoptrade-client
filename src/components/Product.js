@@ -2,12 +2,12 @@ import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import style from "../css/productList.module.css";
 import "bootstrap/dist/css/bootstrap.css";
-// import Button from "react-bootstrap/Button";
+import Button from "react-bootstrap/Button";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { items } from "./ProductList";
+// import { items } from "./ProductList";
 
-export class Product extends Component {
+class Product extends Component {
   constructor(props) {
     super(props);
 
@@ -38,6 +38,7 @@ export class Product extends Component {
   handleAddToCart = (event) => {
     event.preventDefault();
 
+    let items = JSON.parse(localStorage.getItem("itemsInCart"));
     items.push({
       product: this.props.product,
       quantity: 1,
@@ -51,27 +52,29 @@ export class Product extends Component {
     let priceMarkup = (
       <div>
         Price: $<b>{this.props.product.price}</b>{" "}
-        <p>{this.props.product.compare_at_price}</p>
-        <p>
-          {Math.round(
+        <del>{`$ ${this.props.product.compare_at_price}`}</del>{" "}
+        <small className={style.discount}>
+          {`${Math.round(
             (this.props.product.price / this.props.product.compare_at_price) *
               100
-          )}
-          % OFF
-        </p>
+          )}%Off`}
+        </small>
       </div>
     );
 
     let sizesMarkup = this.props.product.options ? (
-      <Card.Text>
+      <Card.Text className={style.options}>
+        Sizes:{" "}
         {this.props.product.options.map((option) => {
           return (
-            <button
+            <Button
+              variant="default"
+              className={style.sizeButton}
               key={option.id}
               onClick={(e) => this.handleOptionClick(option.value, e)}
             >
               {option.value}
-            </button>
+            </Button>
           );
         })}
       </Card.Text>
@@ -80,25 +83,40 @@ export class Product extends Component {
     );
 
     let buttonMarkup = this.state.addToCartButton ? (
-      <button
+      <Button
+        className={style.addToCartButton}
         disabled={this.state.isAddToCartButtonDisabled}
-        variant="primary"
+        variant="default"
         onClick={this.handleAddToCart}
       >
         Add to cart
-      </button>
+      </Button>
     ) : (
-      <button variant="primary">
+      <Button variant="default" className={style.addToCartButton}>
         <Link to="/cart">Go to Cart</Link>
-      </button>
+      </Button>
+    );
+
+    let sizeString = "";
+    this.props.product.options.forEach((option) => {
+      sizeString = sizeString + option.value + ", ";
+    });
+    sizeString = sizeString.slice(0, sizeString.length - 2);
+
+    let sizes = this.props.product.options ? (
+      <p>sizes: {sizeString} </p>
+    ) : (
+      <p>Loading...</p>
     );
 
     return (
       <Col
+        onMouseLeave={this.handleMouseOut}
+        onMouseOver={this.handleMouseEnter}
+        xs={12}
+        md={2}
         className={style.col}
         sm
-        onMouseOver={this.handleMouseEnter}
-        onMouseOut={this.handleMouseOut}
       >
         <Card className={style.fill}>
           <Card.Img
@@ -106,6 +124,7 @@ export class Product extends Component {
             variant="top"
             src={this.props.product.image_src}
           />
+
           {!this.state.isHover && (
             <Card.Body className={style.cardbody}>
               <Card.Title className={style.cardTitle}>
@@ -119,9 +138,10 @@ export class Product extends Component {
           )}
 
           {this.state.isHover && (
-            <Card.Body className={style.cardbody}>
-              {buttonMarkup}
-              {sizesMarkup}
+            <Card.Body className={style.cardBodyOnHover}>
+              {!this.state.isAddToCartButtonDisabled && buttonMarkup}
+              {!this.state.isAddToCartButtonDisabled && sizes}
+              {this.state.isAddToCartButtonDisabled && sizesMarkup}
               {priceMarkup}
             </Card.Body>
           )}

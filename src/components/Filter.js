@@ -2,12 +2,15 @@ import React, { Component } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import getProducts from "../utils/getProducts";
+import style from "../css/filter.module.css";
+import "bootstrap/dist/css/bootstrap.css";
 
 export class Filter extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      values: [],
+      values: ["All Products"],
+      activeFilter: "All Products",
     };
   }
 
@@ -25,12 +28,8 @@ export class Filter extends Component {
         });
         //console.log(uniqueTags);
         this.setState({
-          values: [...uniqueTags],
+          values: [...this.state.values, ...uniqueTags],
         });
-        if (uniqueTags.length > 0) {
-        }
-
-        //console.log("state = ", this.state);
       })
       .catch((err) => {
         console.log("Oops! Something weny wrong!");
@@ -41,22 +40,28 @@ export class Filter extends Component {
     event.preventDefault();
     localStorage.setItem("filterValue", value);
     this.props.setFilterValue(value);
+
+    this.setState({
+      activeFilter: value,
+    });
   }
 
   render() {
     return (
-      <div>
-        Filters:
-        <Button onClick={(e) => this.handleApplyFilter(e, "All Products")}>
-          All Products
-        </Button>
+      <div className={`${style.outerDiv}`}>
+        <b>FILTERS:</b>
+
         {this.state.values.length ? (
           this.state.values.map((value) => (
             <Button
+              className={`${style.button} ${
+                value === this.state.activeFilter ? "active" : ""
+              }`}
+              variant="light"
               onClick={(e) => this.handleApplyFilter(e, value)}
-              key={value.id}
+              key={value}
             >
-              {value}
+              <b>{value}</b>
             </Button>
           ))
         ) : (

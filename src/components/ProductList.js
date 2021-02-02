@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
 import getProducts from "../utils/getProducts";
-import "bootstrap/dist/css/bootstrap.css";
 import ProductRow from "./ProductRow";
+import style from "../css/productList.module.css";
+import "bootstrap/dist/css/bootstrap.css";
 
-export const items = [];
+// export const items = [];
 
 // localStorage.setItem("filterValue", "All Products");
 
@@ -12,7 +13,7 @@ class ProductList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      quads: [],
+      quintet: [],
     };
   }
 
@@ -32,15 +33,17 @@ class ProductList extends Component {
       .then((res) => {
         let products1 = getProducts(res);
         // this.setState({ filter: localStorage.getItem("filterValue") });
+
         if (this.props.filter === "All Products") {
+          this.props.setProductCount(products1.length);
           let i, j;
-          let quadArray = [];
-          for (i = 0, j = products1.length; i < j; i += 4) {
-            quadArray.push(products1.slice(i, i + 4));
+          let quintetArray = [];
+          for (i = 0, j = products1.length; i < j; i += 5) {
+            quintetArray.push(products1.slice(i, i + 5));
           }
-          // console.log(quadArray);
+          // console.log(quintetArray);
           this.setState({
-            quads: [...quadArray],
+            quintet: [...quintetArray],
           });
         } else {
           let filteredProducts = [];
@@ -49,14 +52,15 @@ class ProductList extends Component {
               filteredProducts.push(product);
             }
           });
+          this.props.setProductCount(filteredProducts.length);
           let i, j;
-          let quadArray = [];
+          let quintetArray = [];
           for (i = 0, j = filteredProducts.length; i < j; i += 4) {
-            quadArray.push(filteredProducts.slice(i, i + 4));
+            quintetArray.push(filteredProducts.slice(i, i + 4));
           }
-          // console.log(quadArray);
+          // console.log(quintetArray);
           this.setState({
-            quads: [...quadArray],
+            quintet: [...quintetArray],
           });
         }
       })
@@ -64,9 +68,9 @@ class ProductList extends Component {
   }
 
   render() {
-    let rowMarkUp = this.state.quads ? (
+    let rowMarkUp = this.state.quintet ? (
       <div>
-        {this.state.quads.map((quad) => {
+        {this.state.quintet.map((quad) => {
           return <ProductRow rowItems={quad} />;
         })}
       </div>
@@ -74,7 +78,7 @@ class ProductList extends Component {
       <p>Loading.. </p>
     );
 
-    return <div>{rowMarkUp}</div>;
+    return <div className={style.outerDiv}>{rowMarkUp}</div>;
   }
 }
 

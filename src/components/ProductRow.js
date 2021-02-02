@@ -15,7 +15,7 @@ function ProductRow(props) {
   );
   return (
     <div>
-      <Row>{productMarkUp}</Row>
+      <Row className="justify-content-md-center">{productMarkUp}</Row>
     </div>
   );
 }
